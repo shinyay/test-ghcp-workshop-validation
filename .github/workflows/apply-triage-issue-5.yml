@@ -1,0 +1,51 @@
+name: "Apply Triage to Issue #5"
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add question label and comment to issue #5
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = 5;
+
+            // Check if the label is already applied (idempotency)
+            const { data: labels } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+            });
+            const alreadyLabelled = labels.some(l => l.name === 'question');
+
+            if (!alreadyLabelled) {
+              // Add the "question" label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                labels: ['question'],
+              });
+
+              // Post a greeting comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body: [
+                  '👋 Thanks for opening this issue!',
+                  '',
+                  "I've categorized this as a **question** — you're asking how to configure verbose logging.",
+                  '',
+                  'If you can share more context (e.g., which application or runtime, any existing config files), we can point you to the right configuration option.',
+                ].join('\n'),
+              });
+            }

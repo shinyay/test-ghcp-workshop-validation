@@ -2,7 +2,8 @@ name: "Apply Triage to Issue #5"
 on:
   push:
     branches:
-      - "copilot/configure-verbose-logging"
+      - "main"
+  workflow_dispatch:
 
 permissions:
   issues: write
@@ -17,24 +18,34 @@ jobs:
           script: |
             const issue_number = 5;
 
-            // Add the "question" label
-            await github.rest.issues.addLabels({
+            // Check if the label is already applied (idempotency)
+            const { data: labels } = await github.rest.issues.listLabelsOnIssue({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number,
-              labels: ['question'],
             });
+            const alreadyLabelled = labels.some(l => l.name === 'question');
 
-            // Post a greeting comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number,
-              body: [
-                '👋 Thanks for opening this issue!',
-                '',
-                "I've categorized this as a **question** — you're asking how to configure verbose logging.",
-                '',
-                'If you can share more context (e.g., which application or runtime, any existing config files), we can point you to the right configuration option.',
-              ].join('\n'),
-            });
+            if (!alreadyLabelled) {
+              // Add the "question" label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                labels: ['question'],
+              });
+
+              // Post a greeting comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body: [
+                  '👋 Thanks for opening this issue!',
+                  '',
+                  "I've categorized this as a **question** — you're asking how to configure verbose logging.",
+                  '',
+                  'If you can share more context (e.g., which application or runtime, any existing config files), we can point you to the right configuration option.',
+                ].join('\n'),
+              });
+            }

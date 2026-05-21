@@ -1,0 +1,125 @@
+{
+  "cli_version": "v0.68.3",
+  "run_id": 24872495654,
+  "processed_at": "2026-04-24T13:39:18.001508052+09:00",
+  "run": {
+    "databaseId": 24872495654,
+    "number": 1,
+    "url": "https://github.com/shinyay/test-ghcp-workshop-validation/actions/runs/24872495654",
+    "status": "completed",
+    "conclusion": "failure",
+    "workflowName": "Triage Issue (validation)",
+    "workflowPath": ".github/workflows/triage-issue.lock.yml",
+    "createdAt": "2026-04-24T04:38:18Z",
+    "startedAt": "2026-04-24T04:38:18Z",
+    "updatedAt": "2026-04-24T04:38:29Z",
+    "event": "issues",
+    "headBranch": "main",
+    "headSha": "1d6f287eef15497d069a29d3376c4938f6b1f404",
+    "displayTitle": "Triage Issue (validation)",
+    "Duration": 11000000000,
+    "ActionMinutes": 0,
+    "TokenUsage": 0,
+    "EstimatedCost": 0,
+    "Turns": 0,
+    "ErrorCount": 1,
+    "WarningCount": 0,
+    "MissingToolCount": 0,
+    "MissingDataCount": 0,
+    "NoopCount": 0,
+    "SafeItemsCount": 0,
+    "EffectiveTokens": 0,
+    "LogsPath": "/home/shinyay/work/github/test-ghcp-workshop-validation/.github/aw/logs/run-24872495654"
+  },
+  "metrics": {
+    "TokenUsage": 0,
+    "EstimatedCost": 0,
+    "Turns": 0,
+    "ToolCalls": null,
+    "ToolSequences": null
+  },
+  "task_domain": {
+    "name": "triage",
+    "label": "Triage",
+    "reason": "The run focused on classification, routing, or issue state updates."
+  },
+  "behavior_fingerprint": {
+    "execution_style": "directed",
+    "tool_breadth": "narrow",
+    "actuation_style": "read_only",
+    "resource_profile": "lean",
+    "dispatch_mode": "standalone",
+    "agentic_fraction": 0
+  },
+  "agentic_assessments": [
+    {
+      "kind": "overkill_for_agentic",
+      "severity": "low",
+      "summary": "This Triage run looks stable enough that deterministic automation may be a simpler fit.",
+      "evidence": "turns=0 tool_types=0 actuation=read_only",
+      "recommendation": "Consider whether a scripted rule or deterministic workflow step could replace this agentic path."
+    }
+  ],
+  "access_analysis": null,
+  "firewall_analysis": null,
+  "redacted_domains_analysis": null,
+  "missing_tools": null,
+  "missing_data": null,
+  "noops": null,
+  "mcp_failures": null,
+  "artifacts_list": [
+    "workflow-logs/detection/system.txt",
+    "workflow-logs/pre_activation/system.txt",
+    "workflow-logs/safe_outputs/system.txt"
+  ],
+  "job_details": [
+    {
+      "name": "pre_activation",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-04-24T04:38:19Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": 9000000000
+    },
+    {
+      "name": "activation",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-04-24T04:38:28Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": 0
+    },
+    {
+      "name": "agent",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-04-24T04:38:28Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": 0
+    },
+    {
+      "name": "detection",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-04-24T04:38:28Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": 0
+    },
+    {
+      "name": "conclusion",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-04-24T04:38:29Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": -1000000000
+    },
+    {
+      "name": "safe_outputs",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-04-24T04:38:29Z",
+      "completed_at": "2026-04-24T04:38:28Z",
+      "Duration": -1000000000
+    }
+  ]
+}

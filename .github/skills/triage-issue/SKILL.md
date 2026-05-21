@@ -14,3 +14,6 @@ description: 'Use this skill when a new GitHub issue needs triage. Reads the iss
 2. 内容から最適な 1 つの category label を選ぶ (bug / feature / question / docs)
 3. ラベルを付ける
 4. 確認のための短いコメントを残す
+
+## Note
+Test edit to trigger review-pr custom agent on PR.
